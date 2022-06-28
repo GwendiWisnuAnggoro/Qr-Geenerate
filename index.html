@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QrGenerate</title>
+    <style>
+        div{
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;  
+          display: flex;
+        }
+        canvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas width="300px" height="300px" id="canvas"></canvas>
+        <h1>Enter your url:</h1>
+        <input type="text" placeholder="URL??" id="qrinput" onchange="generateQR()"><br>
+        <button type="submit" onclick="enter()">Generate</button>
+    </div>
+
+    <script src="node_modules/qrcode/build/qrcode.js"></script>
+    <script>
+        function generateQR(){
+            let canvas = document.getElementById('canvas');
+            let input = document.getElementById('qrinput');
+            QRCode.toCanvas(canvas, input.value, (err)=>{
+                if(err) console.error(eror)
+                console.log('Succesfull!!')
+            })
+        }
+    </script>
+</body>
+</html>
